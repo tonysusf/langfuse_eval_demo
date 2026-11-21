@@ -1,0 +1,62 @@
+[
+  {
+    "input": "How heavy can my checked suitcase be?",
+    "expected_output": "baggage",
+    "metadata": {"case_id": "BAG-01"}
+  },
+  {
+    "input": "I landed last night and my suitcase never showed up at the carousel.",
+    "expected_output": "baggage",
+    "metadata": {"case_id": "BAG-02"}
+  },
+  {
+    "input": "I moved my flight to Tuesday. Can I still bring a carry-on with this fare?",
+    "expected_output": "baggage",
+    "metadata": {"case_id": "BAG-03"}
+  },
+  {
+    "input": "The airline canceled my flight. How do I get my money back?",
+    "expected_output": "refund",
+    "metadata": {"case_id": "REF-01"}
+  },
+  {
+    "input": "I sent in my refund request last week. When will the money hit my card?",
+    "expected_output": "refund",
+    "metadata": {"case_id": "REF-02"}
+  },
+  {
+    "input": "I was charged twice for one ticket. Can you reverse the extra charge?",
+    "expected_output": "refund",
+    "metadata": {"case_id": "REF-03"}
+  },
+  {
+    "input": "Can you move my flight to Sunday morning?",
+    "expected_output": "booking_change",
+    "metadata": {"case_id": "CHG-01"}
+  },
+  {
+    "input": "I've decided to stay home. Please cancel my reservation.",
+    "expected_output": "booking_change",
+    "metadata": {"case_id": "CHG-02"}
+  },
+  {
+    "input": "You canceled my flight. Can you book me on the next one?",
+    "expected_output": "booking_change",
+    "metadata": {"case_id": "CHG-03"}
+  },
+  {
+    "input": "I need help with my trip.",
+    "expected_output": "clarify",
+    "metadata": {"case_id": "CLR-01"}
+  },
+  {
+    "input": "My flight was canceled. What now?",
+    "expected_output": "clarify",
+    "metadata": {"case_id": "CLR-02"}
+  },
+  {
+    "input": "I'd like either a refund or a flight tomorrow. I haven't decided which.",
+    "expected_output": "clarify",
+    "metadata": {"case_id": "CLR-03"}
+  }
+]
