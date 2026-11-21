@@ -110,8 +110,9 @@ def main():
             max_concurrency=1,
         )
         print(result.format())
-        if result.experiment_url:
-            print(result.experiment_url)
+        experiment_url = getattr(result, "experiment_url", None) or result.dataset_run_url
+        if experiment_url:
+            print(experiment_url)
 
         scores = {
             item.item["metadata"]["case_id"]: evaluation.value
