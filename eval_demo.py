@@ -6,11 +6,12 @@ import sys
 import time
 from pathlib import Path
 
-MODEL = "google/gemma-4-26b-a4b-it:free"
+MODEL = "deepseek/deepseek-r1-0528:free"
 OPENROUTER_URL = "https://openrouter.ai/api/v1"
 MIN_REQUEST_INTERVAL = 4
 ROUTES = {"baggage", "refund", "booking_change", "clarify"}
 SCORE_NAME = "route_accuracy"
+DEMO_CASE_IDS = ("BAG-03", "REF-01", "CLR-02")
 
 BASELINE_PROMPT = """Route the airline support message to one of these labels:
 baggage, refund, booking_change, clarify.
@@ -63,7 +64,12 @@ def main():
         return 1
 
     try:
-        cases = load_cases(Path(__file__).with_name("cases.json"))
+        all_cases = load_cases(Path(__file__).with_name("cases.json"))
+        cases_by_id = {case["metadata"]["case_id"]: case for case in all_cases}
+        missing_cases = [case_id for case_id in DEMO_CASE_IDS if case_id not in cases_by_id]
+        if missing_cases:
+            raise ValueError(f"Missing demo cases: {', '.join(missing_cases)}")
+        cases = [cases_by_id[case_id] for case_id in DEMO_CASE_IDS]
         from langfuse import Evaluation, get_client
         from langfuse.openai import OpenAI
         from openai import APIError

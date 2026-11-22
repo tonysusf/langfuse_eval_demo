@@ -1,6 +1,6 @@
 # Airline support routing eval
 
-Compare a baseline prompt with a candidate that defines the airline support routes and handles ambiguous requests. Both prompts classify the same 12 synthetic messages using [Google Gemma 4 26B A4B's free variant](https://openrouter.ai/google/gemma-4-26b-a4b-it:free) through OpenRouter. Langfuse records each prediction, its score, and the model call.
+Compare a baseline prompt with a candidate that defines the airline support routes and handles ambiguous requests. Both prompts classify the same three synthetic messages using [DeepSeek R1 0528's free variant](https://openrouter.ai/deepseek/deepseek-r1-0528:free) through OpenRouter. Langfuse records each prediction, its score, and the model call.
 
 ## Run the demo
 
@@ -19,7 +19,7 @@ export OPENROUTER_API_KEY='your-openrouter-api-key'
 python eval_demo.py
 ```
 
-The script spaces out its 24 model requests, so allow at least 90 seconds for a complete run. If you hit an HTTP 429, check your [OpenRouter free-tier limits](https://openrouter.ai/collections/free-models) before running it again.
+Each comparison makes six model requests, three per prompt. The demo uses the carry-on question, the refund request after cancellation, and the vague cancellation question from the 12-case dataset. The script spaces requests four seconds apart, so allow at least 20 seconds. If you hit an HTTP 429, check your [OpenRouter free-tier limits](https://openrouter.ai/collections/free-models) before running it again.
 
 ## Compare the results
 
